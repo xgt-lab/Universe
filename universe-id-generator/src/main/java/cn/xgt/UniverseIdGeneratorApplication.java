@@ -5,7 +5,7 @@ package cn.xgt;
  * @description TODO
  * @date 2025/12/2
  */
-public class Main {
+public class UniverseIdGeneratorApplication {
 	public static void main(String[] args) {
 		System.out.println("Hello world!");
 	}
