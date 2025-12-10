@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>cn.xgt</groupId>
 		<artifactId>universe-parent</artifactId>
-		<version>1.0.5</version>
+		<version>1.0.6</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
@@ -16,46 +16,14 @@
 	<packaging>jar</packaging>
 
 	<name>Universe ID Generator</name>
-	<description>基于Redis的分布式ID生成器工具</description>
+	<description>分布式ID生成器工具,支持redis自定义、UUID、雪花等常用ID生成</description>
 	<url>https://github.com/1576745517/Universe</url>
 
 	<dependencies>
-		<!-- Spring Boot Starter -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- Spring Boot Configuration Processor -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-configuration-processor</artifactId>
-			<optional>true</optional>
-		</dependency>
-
-		<!-- Spring Data Redis -->
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-redis</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>cn.hutool</groupId>
-			<artifactId>hutool-all</artifactId>
-			<version>5.8.18</version>
-		</dependency>
-
-		<!-- Lombok -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.12.0</version>
+			<groupId>cn.xgt</groupId>
+			<artifactId>universe-common</artifactId>
+			<version>1.0.6</version>
 		</dependency>
 	</dependencies>
 

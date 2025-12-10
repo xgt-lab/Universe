@@ -18,8 +18,8 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="universe-demo" options="-parameters" />
-      <module name="universe-id-generator" options="" />
-      <module name="universe-mask" options="" />
+      <module name="universe-id-generator" options="-parameters" />
+      <module name="universe-mask" options="-parameters" />
     </option>
   </component>
 </project>

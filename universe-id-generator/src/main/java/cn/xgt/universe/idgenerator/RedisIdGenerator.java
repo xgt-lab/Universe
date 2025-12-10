@@ -8,6 +8,8 @@ package cn.xgt.universe.idgenerator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import cn.xgt.universe.common.util.RedisRepository;
+
 
 //@Component
 public class RedisIdGenerator implements IdGenerator {
@@ -15,14 +17,21 @@ public class RedisIdGenerator implements IdGenerator {
 	private static final Logger logger = LoggerFactory.getLogger(RedisIdGenerator.class);
 
 	//@Autowired
-	private IdRedisRepository idRedisRepository;
+	private RedisRepository redisRepository;
 
 	//@Autowired
 	private IdGeneratorProperties properties;
 
 	// 添加构造函数用于依赖注入
-	public RedisIdGenerator(IdRedisRepository idRedisRepository, IdGeneratorProperties properties) {
-		this.idRedisRepository = idRedisRepository;
+	public RedisIdGenerator(RedisRepository redisRepository, IdGeneratorProperties properties) {
+		if (redisRepository == null) {
+			throw new IllegalArgumentException("RedisRepository cannot be null");
+		}
+		if (properties == null) {
+			throw new IllegalArgumentException("IdGeneratorProperties cannot be null");
+		}
+
+		this.redisRepository = redisRepository;
 		this.properties = properties;
 	}
 
@@ -38,11 +47,11 @@ public class RedisIdGenerator implements IdGenerator {
 		}
 
 		String redisKey = properties.getKeyPrefix() + ":" + key;
-		Long id = idRedisRepository.increment(redisKey, 1);
+		Long id = redisRepository.increment(redisKey, 1);
 
 		// 设置过期时间（可选）
 		if (properties.getExpireTime() > 0) {
-			idRedisRepository.expire(redisKey, properties.getExpireTime());
+			redisRepository.expire(redisKey, properties.getExpireTime());
 		}
 
 		logger.debug("生成ID: key={}, redisKey={}, id={}", key, redisKey, id);

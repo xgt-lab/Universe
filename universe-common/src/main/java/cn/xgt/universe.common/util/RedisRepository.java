@@ -1,4 +1,4 @@
-package cn.xgt.universe.idgenerator;
+package cn.xgt.universe.common.util;
 
 
 import org.apache.commons.lang3.StringUtils;
@@ -11,19 +11,19 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 //@Component
-public class IdRedisRepository {
+public class RedisRepository {
 
-    Logger logger = LoggerFactory.getLogger(IdRedisRepository.class);
+    Logger logger = LoggerFactory.getLogger(RedisRepository.class);
     //@Autowired
     private StringRedisTemplate template;
 
     // 添加构造函数用于注入 StringRedisTemplate
-    public IdRedisRepository(StringRedisTemplate template) {
+    public RedisRepository(StringRedisTemplate template) {
         this.template = template;
     }
 
     // 保留无参构造函数（向后兼容）
-    public IdRedisRepository() {
+    public RedisRepository() {
     }
 
     public boolean set(String key, String value) {

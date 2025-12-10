@@ -13,6 +13,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
+import cn.xgt.universe.common.util.RedisRepository;
+
 @Configuration
 @ConditionalOnClass({StringRedisTemplate.class})
 @ConditionalOnProperty(prefix = "universe.id-generator", name = "enabled", havingValue = "true", matchIfMissing = true)
@@ -20,13 +22,13 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 public class IdGeneratorAutoConfiguration {
 
 	/**
-	 * 创建 IdRedisRepository Bean
+	 * 创建 RedisRepository Bean
 	 * 如果项目中没有自定义的 IdRedisRepository，则创建默认的
 	 */
 	@Bean
 	@ConditionalOnMissingBean
-	public IdRedisRepository idRedisRepository(StringRedisTemplate stringRedisTemplate) {
-		return new IdRedisRepository(stringRedisTemplate);
+	public RedisRepository redisRepository(StringRedisTemplate stringRedisTemplate) {
+		return new RedisRepository(stringRedisTemplate);
 	}
 
 	/**
@@ -35,8 +37,8 @@ public class IdGeneratorAutoConfiguration {
 	 */
 	@Bean("redisIdGenerator")
 	@ConditionalOnMissingBean(name = "redisIdGenerator")
-	public IdGenerator idGenerator(IdRedisRepository idRedisRepository, IdGeneratorProperties properties) {
-		return new RedisIdGenerator(idRedisRepository, properties);
+	public IdGenerator idGenerator(RedisRepository redisRepository, IdGeneratorProperties properties) {
+		return new RedisIdGenerator(redisRepository, properties);
 	}
 
 	@Bean("uuidIdGenerator")
