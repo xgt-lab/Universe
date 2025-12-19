@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 继承父 pom -->
+    <parent>
+        <groupId>cn.xgt</groupId>
+        <artifactId>universe-parent</artifactId>
+        <version>1.0.8</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <groupId>cn.xgt</groupId>
+    <artifactId>universe-all</artifactId>
+
+    <name>Universe All</name>
+    <description>Universe 所有功能模块聚合包，引入此依赖即可使用 Universe 项目的所有功能</description>
+    <url>https://github.com/1576745517/Universe</url>
+
+    <dependencies>
+        <!-- 集成所有功能模块 -->
+        <dependency>
+            <groupId>cn.xgt</groupId>
+            <artifactId>universe-id-generator</artifactId>
+            <!-- 版本由父 POM 的 dependencyManagement 管理 -->
+        </dependency>
+
+        <dependency>
+            <groupId>cn.xgt</groupId>
+            <artifactId>universe-mask</artifactId>
+            <!-- 版本由父 POM 的 dependencyManagement 管理 -->
+        </dependency>
+
+        <!-- 后续可能增加的其他功能模块，取消注释即可集成 -->
+        <!--
+        <dependency>
+            <groupId>cn.xgt</groupId>
+            <artifactId>universe-other</artifactId>
+        </dependency>
+        -->
+    </dependencies>
+
+</project>

@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/universe-parent/pom.xml" />
         <option value="$PROJECT_DIR$/universe-mask/pom.xml" />
         <option value="$PROJECT_DIR$/universe-common/pom.xml" />
+        <option value="$PROJECT_DIR$/universe-all/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

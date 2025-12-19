@@ -44,6 +44,7 @@
 		<module>universe-common</module>
 		<module>universe-id-generator</module>
 		<module>universe-mask</module>
+		<module>universe-all</module>
 		<!-- universe-demo 是测试模块，不需要发布 -->
 		<!-- <module>universe-demo</module> -->
 	</modules>
@@ -73,6 +74,19 @@
 				<artifactId>universe-common</artifactId>
 				<version>1.0.8</version>
 			</dependency>
+			<dependency>
+				<groupId>cn.xgt</groupId>
+				<artifactId>universe-all</artifactId>
+				<version>1.0.8</version>
+			</dependency>
+			<!-- 后续可能增加的其他功能模块，在此处添加版本管理 -->
+			<!--
+			<dependency>
+				<groupId>cn.xgt</groupId>
+				<artifactId>universe-other</artifactId>
+				<version>1.0.8</version>
+			</dependency>
+			-->
 		</dependencies>
 	</dependencyManagement>
 
