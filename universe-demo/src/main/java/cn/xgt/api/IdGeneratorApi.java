@@ -37,16 +37,16 @@ public class IdGeneratorApi {
   @Qualifier("uuidIdGenerator")
   private IdGenerator uuidIdGenerator;
 
-  @GetMapping(value = "getInfo1")
-  public String getInfo1() {
+  @GetMapping(value = "getId1")
+  public String getId1() {
     IdGenerator uuidGenerator = idGeneratorFactory.getUuidGenerator();
     String idString = uuidGenerator.nextIdString();
     logger.info("================={}", idString);
     return idString;
   }
 
-  @GetMapping(value = "getInfo2")
-  public String getInfo2() {
+  @GetMapping(value = "getId2")
+  public String getId2() {
     String idString = uuidIdGenerator.nextIdString();
     logger.info("================={}", idString);
     return idString;

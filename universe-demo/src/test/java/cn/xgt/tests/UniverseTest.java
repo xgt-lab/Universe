@@ -24,10 +24,8 @@ public class UniverseTest {
 	 */
 	@BeforeEach
 	public void printTestStartMessage(TestInfo testInfo) {
-		logger.info("=====================================================");
-		logger.info("开始执行测试方法: {} - 类: {}",
-				testInfo.getDisplayName(),
-				testInfo.getTestClass().map(Class::getSimpleName).orElse("Unknown"));
+		logger.info("===========================开始执行测试方法{}.{}==========================",
+				testInfo.getTestClass().map(Class::getSimpleName).orElse("Unknown"), testInfo.getDisplayName());
 	}
 
 	/**
@@ -35,10 +33,7 @@ public class UniverseTest {
 	 */
 	@AfterEach
 	public void printTestEndMessage(TestInfo testInfo) {
-		logger.info("测试方法执行完成: {} - 类: {}",
-				testInfo.getDisplayName(),
-				testInfo.getTestClass().map(Class::getSimpleName).orElse("Unknown"));
-		logger.info("=====================================================");
+		logger.info("===========================测试方法执行完成{}.{}==========================",
+				testInfo.getTestClass().map(Class::getSimpleName).orElse("Unknown"), testInfo.getDisplayName());
 	}
-
 }

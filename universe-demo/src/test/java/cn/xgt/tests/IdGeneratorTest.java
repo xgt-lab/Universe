@@ -1,13 +1,8 @@
 package cn.xgt.tests;
 
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import cn.xgt.UniverseDemoApplication;
 import cn.xgt.universe.idgenerator.IdGenerator;
 import cn.xgt.universe.idgenerator.IdGeneratorFactory;
 
@@ -33,14 +28,14 @@ public class IdGeneratorTest extends UniverseTest {
 	private IdGenerator uuidIdGenerator;
 
 	@Test
-	public void getInfo1() {
+	public void getId1() {
 		IdGenerator uuidGenerator = idGeneratorFactory.getUuidGenerator();
 		String idString = uuidGenerator.nextIdString();
 		logger.info("================={}", idString);
 	}
 
 	@Test
-	public void getInfo2() {
+	public void getId2() {
 		String idString = uuidIdGenerator.nextIdString();
 		logger.info("================={}", idString);
 	}
