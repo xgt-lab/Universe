@@ -11,20 +11,20 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>cn.xgt</groupId>
+	<groupId>com.github.xgt-open</groupId>
 	<artifactId>universe-parent</artifactId>
 	<version>1.0.10</version>
 	<packaging>pom</packaging>
 
 	<name>Universe Parent</name>
 	<description>Universe Parent</description>
-	<url>https://github.com/1576745517/Universe</url>
+	<url>https://github.com/xgt-open/Universe</url>
 
 	<!-- SCM信息，JitPack需要此配置 -->
 	<scm>
-		<connection>scm:git:git://github.com/1576745517/Universe.git</connection>
-		<developerConnection>scm:git:ssh://github.com/1576745517/Universe.git</developerConnection>
-		<url>https://github.com/1576745517/Universe</url>
+		<connection>scm:git:git://github.com/xgt-open/Universe.git</connection>
+		<developerConnection>scm:git:ssh://github.com/xgt-open/Universe.git</developerConnection>
+		<url>https://github.com/xgt-open/Universe</url>
 		<tag>HEAD</tag>
 	</scm>
 
@@ -60,29 +60,29 @@
 				<scope>import</scope>
 			</dependency>
 			<dependency>
-				<groupId>cn.xgt</groupId>
+				<groupId>com.github.xgt-open</groupId>
 				<artifactId>universe-id-generator</artifactId>
 				<version>1.0.10</version>
 			</dependency>
 			<dependency>
-				<groupId>cn.xgt</groupId>
+				<groupId>com.github.xgt-open</groupId>
 				<artifactId>universe-mask</artifactId>
 				<version>1.0.10</version>
 			</dependency>
 			<dependency>
-				<groupId>cn.xgt</groupId>
+				<groupId>com.github.xgt-open</groupId>
 				<artifactId>universe-common</artifactId>
 				<version>1.0.10</version>
 			</dependency>
 			<dependency>
-				<groupId>cn.xgt</groupId>
+				<groupId>com.github.xgt-open</groupId>
 				<artifactId>universe-all</artifactId>
 				<version>1.0.10</version>
 			</dependency>
 			<!-- 后续可能增加的其他功能模块，在此处添加版本管理 -->
 			<!--
 			<dependency>
-				<groupId>cn.xgt</groupId>
+				<groupId>com.github.xgt-open</groupId>
 				<artifactId>universe-other</artifactId>
 				<version>1.0.8</version>
 			</dependency>

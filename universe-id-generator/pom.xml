@@ -6,23 +6,24 @@
 
 	<!-- 继承父 pom -->
 	<parent>
-		<groupId>cn.xgt</groupId>
+		<groupId>com.github.xgt-open</groupId>
 		<artifactId>universe-parent</artifactId>
 		<version>1.0.10</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
+	<groupId>com.github.xgt-open</groupId>
 	<artifactId>universe-id-generator</artifactId>
 	<packaging>jar</packaging>
 
 	<name>Universe ID Generator</name>
 	<description>分布式ID生成器工具,支持redis自定义、UUID、雪花等常用ID生成</description>
-	<url>https://github.com/1576745517/Universe</url>
+	<url>https://github.com/xgt-open/Universe</url>
 
 	<dependencies>
 
 		<dependency>
-			<groupId>cn.xgt</groupId>
+			<groupId>com.github.xgt-open</groupId>
 			<artifactId>universe-common</artifactId>
 			<!-- 版本由父 POM 的 dependencyManagement 管理 -->
 		</dependency>

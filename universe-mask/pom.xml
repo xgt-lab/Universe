@@ -6,23 +6,24 @@
 
 	<!-- 继承父 pom -->
 	<parent>
-		<groupId>cn.xgt</groupId>
+		<groupId>com.github.xgt-open</groupId>
 		<artifactId>universe-parent</artifactId>
 		<version>1.0.10</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
+	<groupId>com.github.xgt-open</groupId>
 	<artifactId>universe-mask</artifactId>
 	<packaging>jar</packaging>
 
 	<name>Universe Mask</name>
 	<description>数据脱敏工具，支持姓名、手机号、身份证、银行卡、邮箱等多种脱敏策略</description>
-	<url>https://github.com/1576745517/Universe</url>
+	<url>https://github.com/xgt-open/Universe</url>
 
 	<dependencies>
 
 		<dependency>
-			<groupId>cn.xgt</groupId>
+			<groupId>com.github.xgt-open</groupId>
 			<artifactId>universe-common</artifactId>
 			<!-- 版本由父 POM 的 dependencyManagement 管理 -->
 		</dependency>

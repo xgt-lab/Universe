@@ -11,7 +11,7 @@
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7.18-brightgreen.svg)](https://spring.io/projects/spring-boot)
 [![Maven](https://img.shields.io/badge/Maven-3.6+-red.svg)](https://maven.apache.org/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![JitPack](https://jitpack.io/v/1576745517/Universe.svg)](https://jitpack.io/#1576745517/Universe)
+[![JitPack](https://jitpack.io/v/xgt-open/Universe.svg)](https://jitpack.io/#xgt-open/Universe)
 
 [功能特性](#-功能特性) • [快速开始](#-快速开始) • [使用文档](#-使用文档) • [示例代码](#-示例代码) • [更新日志](#-更新日志)
 
@@ -74,14 +74,14 @@
 <dependencies>
     <!-- ID 生成器 -->
     <dependency>
-        <groupId>com.github.1576745517.Universe</groupId>
+        <groupId>com.github.xgt-open.Universe</groupId>
         <artifactId>universe-id-generator</artifactId>
         <version>1.0.8</version>
     </dependency>
     
     <!-- 数据脱敏工具 -->
     <dependency>
-        <groupId>com.github.1576745517.Universe</groupId>
+        <groupId>com.github.xgt-open.Universe</groupId>
         <artifactId>universe-mask</artifactId>
         <version>1.0.8</version>
     </dependency>
@@ -91,7 +91,7 @@
 #### 方式二：本地安装
 
 ```bash
-git clone https://github.com/1576745517/Universe.git
+git clone https://github.com/xgt-open/Universe.git
 cd Universe
 mvn clean install
 ```
@@ -488,7 +488,7 @@ A: 确保 Redis 服务正常运行，检查配置的 host、port、password 是�
 
 **XGT**
 
-- GitHub: [@1576745517](https://github.com/1576745517)
+- GitHub: [@xgt-open](https://github.com/xgt-open)
 
 ---
 
