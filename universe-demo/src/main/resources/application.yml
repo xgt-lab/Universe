@@ -5,6 +5,12 @@ universe:
     key-prefix: id_generator
     default-key: id_generator_default
     expire-time: 0
+  redisson:
+    enabled: true
+    # 以下是可选覆盖项，不配就走默认值
+    connection-minimum-idle-size: 1
+    connection-pool-size: 8
+    lock-watchdog-timeout-ms: 30000
 
 spring:
   application:
@@ -36,3 +42,54 @@ spring:
   #    database: 14
   #    # 连接超时时间
   #    timeout: 3000ms
+  datasource:
+    # TiDB Cloud 连接 URL（替换为你的实际值）网址:tidbcloud.com
+    url: jdbc:mysql://gateway01.ap-northeast-1.prod.aws.tidbcloud.com:4000/mydb?sslMode=VERIFY_IDENTITY&enabledTLSProtocols=TLSv1.2
+    username: 2ydooSeWXxBq9u9.root   # 完整的用户名（包含前缀）
+    password: xfcxVyOiD9P63Evl
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+#  mail:
+#    host: smtp.resend.com
+#    port: 587
+#    username: resend
+#    password: re_SA5kB86m_9G1AUfhHQxaPiZX1VAxTvDxD   # 从环境变量读取 resend.com
+#    from: 1576745517@qq.com
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#            required: true
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: 1576745517@qq.com
+    password: wqnvsgwwvwvdjejc
+    from: 1576745517@qq.com
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+
+#  jpa:
+#    hibernate:
+#      ddl-auto: update          # 开发阶段自动建表
+#    show-sql: true
+#    database-platform: org.hibernate.dialect.TiDBDialect   # TiDB 专用方言
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml   # mapper XML 文件位置
+  type-aliases-package: cn.xgt.entity
+
+
+
+

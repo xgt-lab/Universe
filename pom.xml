@@ -61,6 +61,8 @@
 		<maven.javadoc.plugin.version>3.4.1</maven.javadoc.plugin.version>
 		<maven.gpg.plugin.version>3.0.1</maven.gpg.plugin.version>
 		<maven.nexus.staging.plugin.version>1.6.13</maven.nexus.staging.plugin.version>
+		<redisson.version>3.23.5</redisson.version>
+
 	</properties>
 
 	<!-- 管理所有子模块 -->

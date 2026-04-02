@@ -1,11 +1,16 @@
 package cn.xgt.api;
 
+import cn.hutool.json.JSON;
 import cn.hutool.json.JSONUtil;
+import cn.xgt.entity.User;
+import cn.xgt.mapper.UserMapper;
 import cn.xgt.universe.common.util.BeanCopyUtils;
 import cn.xgt.vo.CopyDTO;
 import cn.xgt.vo.CopyEntity;
 import cn.xgt.vo.CopyVO;
-import lombok.Data;
+
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +18,9 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
+
+import javax.annotation.Resource;
 
 /**
  * @author XGT
@@ -21,7 +29,7 @@ import java.util.*;
  */
 @RestController
 @RequestMapping(value = "restful/common")
-public class commonApi {
+public class CommonApi {
 
     private Logger logger = LoggerFactory.getLogger(MaskApi.class);
 
@@ -526,5 +534,84 @@ public class commonApi {
         user.setActive(active);
         user.setMobile(mobile);
         return user;
+    }
+
+
+    @Resource
+    private UserMapper userMapper;
+    @PostMapping(value = "testTiDb")
+    public User testTiDb(@RequestBody User user) {
+        /*User user = new User();
+        user.setName("universe001");
+        user.setEmail("1576745517@qq.com");*/
+        userMapper.insert(user);
+
+        logger.info("user: {}", JSONUtil.toJsonStr(user));
+
+        return userMapper.findById(user.getId());
+    }
+
+    @Resource
+    private RedissonClient redissonClient;
+    @PostMapping("testRedisson")
+    public Map<String, Object> testRedisson(@RequestParam(defaultValue = "10") int threadCount) throws InterruptedException {
+        String lockKey = "lock:test:redisson:simple";
+
+        logger.info("testRedisson start, threadCount={}, lockKey={}", threadCount, lockKey);
+
+        java.util.concurrent.ExecutorService pool = java.util.concurrent.Executors.newFixedThreadPool(threadCount);
+        java.util.concurrent.CountDownLatch latch = new java.util.concurrent.CountDownLatch(threadCount);
+        java.util.concurrent.atomic.AtomicInteger success = new java.util.concurrent.atomic.AtomicInteger(0);
+        java.util.concurrent.atomic.AtomicInteger fail = new java.util.concurrent.atomic.AtomicInteger(0);
+
+        for (int i = 0; i < threadCount; i++) {
+            final int idx = i;
+            pool.submit(() -> {
+                String threadName = "T-" + idx;
+                RLock lock = redissonClient.getLock(lockKey);
+                try {
+                    logger.info("[{}] tryLock begin", threadName);
+
+                    // 不等待，抢不到立即返回
+                    boolean ok = lock.tryLock(2, 3, TimeUnit.SECONDS);
+                    if (ok) {
+                        try {
+                            int c = success.incrementAndGet();
+                            logger.info("[{}] lock success, successCount={}", threadName, c);
+
+                            Thread.sleep(200); // 模拟业务
+                            logger.info("[{}] business done", threadName);
+                        } finally {
+                            if (lock.isHeldByCurrentThread()) {
+                                lock.unlock();
+                                logger.info("[{}] unlock success", threadName);
+                            } else {
+                                logger.warn("[{}] not lock owner, skip unlock", threadName);
+                            }
+                        }
+                    } else {
+                        int c = fail.incrementAndGet();
+                        logger.info("[{}] lock fail, failCount={}", threadName, c);
+                    }
+                } catch (Exception e) {
+                    int c = fail.incrementAndGet();
+                    logger.error("[{}] exception, failCount={}", threadName, c, e);
+                } finally {
+                    latch.countDown();
+                }
+            });
+        }
+
+        latch.await();
+        pool.shutdown();
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("threadCount", threadCount);
+        result.put("success", success.get());
+        result.put("fail", fail.get());
+        result.put("lockKey", lockKey);
+
+        logger.info("testRedisson end, result={}", JSONUtil.toJsonStr(result));
+        return result;
     }
 }
